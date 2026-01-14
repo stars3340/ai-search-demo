@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>AI 搜索</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            
+            <!-- AI 搜索卡片 -->
+            <div class="search-card" id="searchCard" style="display: none;">
+                <!-- 卡片头部：确定性反馈 -->
+                <div class="search-header" id="searchHeader">
+                    <div class="header-left">
+                        <div class="ai-badge">
+                            <span class="ai-icon">✨</span>
+                            <span class="ai-label">AI 搜索</span>
+                        </div>
+                        <div class="search-stats">
+                            <span class="stat-item">
+                                <span class="stat-number" id="keywordCount">0</span>
+                                <span class="stat-label">个搜索词</span>
+                            </span>
+                            <span class="stat-divider">·</span>
+                            <span class="stat-item">
+                                <span class="stat-number" id="contentCount">0</span>
+                                <span class="stat-label">篇参考</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <span class="expand-text">详情</span>
+                        <span class="expand-icon" id="expandIcon">▾</span>
+                    </div>
+                </div>
+                
+                <!-- 搜索中指示器：沉浸式动效 -->
+                <div class="searching-indicator" id="searchingIndicator">
+                    <div class="searching-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <span class="searching-text">正在搜索分析中</span>
+                </div>
+                
+                <!-- 详情面板：分层信息展示 -->
+                <div class="search-detail" id="searchDetail">
+                    <div class="detail-section">
+                        <div class="detail-title">搜索关键词</div>
+                        <div class="keywords-list" id="keywordsList">
+                            <!-- 动态生成 -->
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">参考来源</div>
+                        <div class="sources-list" id="sourcesList">
+                            <!-- 动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回答区域 -->
+            <div class="answer-section" id="answerSection" style="display: none;">
+                <div class="answer-content" id="answerContent">
+                    <!-- 动态生成回答 -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部输入框 -->
+        <div class="bottom-input-container">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="继续追问..." value="什么是人工智能的发展趋势？" disabled>
+                <button class="send-btn">
+                    <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

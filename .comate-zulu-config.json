@@ -1,0 +1,15 @@
+{
+  "uuid": 1,
+  "type": "demo",
+  "title": "这是我的一个新的mac电脑，什么都没安装，你想需要思考都需要安装什么，包括软件、包等",
+  "model": {
+    "displayName": "Claude Opus 4.5",
+    "modelId": "claude-4.5-opus_555e3946bcca4ebca2dba91864f8bd79",
+    "requestType": "COMATE_MULTIPLE_MODE",
+    "mode": "MAX"
+  },
+  "knowledgeList": [],
+  "prompt": "这是我的一个新的mac电脑，什么都没安装，你想需要思考都需要安装什么，包括软件、包等",
+  "displayQuery": "这是我的一个新的mac电脑，什么都没安装，你想需要思考都需要安装什么，包括软件、包等",
+  "status": "done"
+}
