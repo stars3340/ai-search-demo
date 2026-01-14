@@ -13,10 +13,10 @@
         <!-- 主内容区域 -->
         <div class="main-content">
             
-            <!-- AI 搜索卡片 -->
-            <div class="search-card" id="searchCard" style="display: none;">
+            <!-- AI 搜索完整卡片 -->
+            <div class="ai-card" id="aiCard" style="display: none;">
                 <!-- 卡片头部：确定性反馈 -->
-                <div class="search-header" id="searchHeader">
+                <div class="card-header" id="cardHeader">
                     <div class="header-left">
                         <div class="ai-badge">
                             <span class="ai-icon">✨</span>
@@ -51,7 +51,7 @@
                 </div>
                 
                 <!-- 详情面板：分层信息展示 -->
-                <div class="search-detail" id="searchDetail">
+                <div class="card-detail" id="cardDetail">
                     <div class="detail-section">
                         <div class="detail-title">搜索关键词</div>
                         <div class="keywords-list" id="keywordsList">
@@ -65,14 +65,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 回答区域 -->
-            <div class="answer-section" id="answerSection" style="display: none;">
-                <div class="answer-content" id="answerContent">
+                
+                <!-- 答案内容 -->
+                <div class="answer-content" id="answerContent" style="display: none;">
                     <!-- 动态生成回答 -->
                 </div>
             </div>
+            
         </div>
         
         <!-- 底部输入框 -->

@@ -48,25 +48,25 @@ body {
     padding-bottom: calc(80px + var(--safe-area-bottom));
 }
 
-/* ========== AI 搜索卡片 ========== */
-.search-card {
+/* ========== AI 完整卡片 ========== */
+.ai-card {
     background: var(--bg-color);
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 12px;
 }
 
 /* 卡片头部 */
-.search-header {
+.card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
     cursor: pointer;
     transition: background 0.15s ease;
+    border-bottom: 1px solid var(--divider-color);
 }
 
-.search-header:active {
+.card-header:active {
     background: var(--bg-secondary);
 }
 
@@ -150,7 +150,7 @@ body {
     transition: transform 0.25s ease;
 }
 
-.search-card.expanded .expand-icon {
+.ai-card.expanded .expand-icon {
     transform: rotate(180deg);
 }
 
@@ -160,8 +160,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 16px;
-    background: var(--bg-secondary);
+    padding: 16px;
 }
 
 .searching-dots {
@@ -198,12 +197,13 @@ body {
 }
 
 /* 分层信息展示：详情面板 */
-.search-detail {
+.card-detail {
     display: none;
-    padding: 0 16px 16px;
+    padding: 16px;
+    border-bottom: 1px solid var(--divider-color);
 }
 
-.search-card.expanded .search-detail {
+.ai-card.expanded .card-detail {
     display: block;
     animation: slideDown 0.25s ease;
 }
@@ -301,20 +301,9 @@ body {
     flex-shrink: 0;
 }
 
-/* ========== 回答区域 ========== */
-.answer-section {
-    background: var(--bg-color);
-    border-radius: 12px;
-    padding: 16px;
-    animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
+/* 答案内容区域 */
 .answer-content {
+    padding: 16px;
     font-size: 15px;
     line-height: 1.8;
     color: var(--text-primary);

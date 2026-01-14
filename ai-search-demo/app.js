@@ -62,15 +62,14 @@ class SearchController {
         this.isSearching = false;
         this.isExpanded = false;
         
-        this.searchCard = document.getElementById('searchCard');
-        this.searchHeader = document.getElementById('searchHeader');
+        this.aiCard = document.getElementById('aiCard');
+        this.cardHeader = document.getElementById('cardHeader');
         this.keywordCountEl = document.getElementById('keywordCount');
         this.contentCountEl = document.getElementById('contentCount');
         this.expandIcon = document.getElementById('expandIcon');
-        this.searchDetail = document.getElementById('searchDetail');
+        this.cardDetail = document.getElementById('cardDetail');
         this.keywordsList = document.getElementById('keywordsList');
         this.sourcesList = document.getElementById('sourcesList');
-        this.answerSection = document.getElementById('answerSection');
         this.answerContent = document.getElementById('answerContent');
         this.searchingIndicator = document.getElementById('searchingIndicator');
         
@@ -79,20 +78,26 @@ class SearchController {
     }
     
     bindEvents() {
-        this.searchHeader.addEventListener('click', () => this.toggleExpand());
+        this.cardHeader.addEventListener('click', () => this.toggleExpand());
     }
     
     toggleExpand() {
-        this.isExpanded = !this.isExpanded;
-        this.searchCard.classList.toggle('expanded', this.isExpanded);
+        if (!this.isSearching) {
+            this.isExpanded = !this.isExpanded;
+            this.aiCard.classList.toggle('expanded', this.isExpanded);
+        }
     }
     
     async startSearch() {
         if (this.isSearching) return;
         
         this.isSearching = true;
-        this.searchCard.style.display = 'block';
+        this.aiCard.style.display = 'block';
         this.searchingIndicator.style.display = 'flex';
+        
+        // 搜索过程中自动展开详情
+        this.isExpanded = true;
+        this.aiCard.classList.add('expanded');
         
         // 逐步执行搜索步骤
         for (const step of searchSteps) {
@@ -103,6 +108,10 @@ class SearchController {
         // 搜索完成，隐藏指示器
         this.searchingIndicator.style.display = 'none';
         await this.delay(300);
+        
+        // 显示答案时自动折叠详情
+        this.isExpanded = false;
+        this.aiCard.classList.remove('expanded');
         
         // 显示答案
         this.showAnswer();
@@ -152,7 +161,7 @@ class SearchController {
     }
     
     async showAnswer() {
-        this.answerSection.style.display = 'block';
+        this.answerContent.style.display = 'block';
         this.answerContent.innerHTML = '';
         
         // 打字机效果
