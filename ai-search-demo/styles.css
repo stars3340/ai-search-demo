@@ -82,14 +82,53 @@ body {
     gap: 4px;
 }
 
-.ai-icon {
-    font-size: 14px;
-}
-
 .ai-label {
     font-size: 15px;
     font-weight: 600;
-    color: var(--text-primary);
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+/* 搜索中时文字扫光动画 */
+.ai-card .ai-label::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        #66a3ff 20%,
+        #99c2ff 50%,
+        #66a3ff 80%,
+        var(--primary-color) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShimmer 2s linear infinite;
+}
+
+/* 停止扫光 */
+.ai-label.no-shimmer::before {
+    animation: none !important;
+}
+
+@keyframes textShimmer {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+.ai-icon {
+    font-size: 14px;
 }
 
 /* 确定性反馈：量化数据 */
@@ -154,47 +193,6 @@ body {
     transform: rotate(180deg);
 }
 
-/* 沉浸式动效：搜索指示器 */
-.searching-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 16px;
-}
-
-.searching-dots {
-    display: flex;
-    gap: 4px;
-}
-
-.dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    animation: dotPulse 1.4s ease-in-out infinite;
-}
-
-.dot:nth-child(1) { animation-delay: 0s; }
-.dot:nth-child(2) { animation-delay: 0.2s; }
-.dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes dotPulse {
-    0%, 80%, 100% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-    40% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.searching-text {
-    font-size: 13px;
-    color: var(--text-secondary);
-}
 
 /* 分层信息展示：详情面板 */
 .card-detail {

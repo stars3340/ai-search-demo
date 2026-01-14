@@ -71,7 +71,6 @@ class SearchController {
         this.keywordsList = document.getElementById('keywordsList');
         this.sourcesList = document.getElementById('sourcesList');
         this.answerContent = document.getElementById('answerContent');
-        this.searchingIndicator = document.getElementById('searchingIndicator');
         
         this.bindEvents();
         this.startSearch();
@@ -93,7 +92,6 @@ class SearchController {
         
         this.isSearching = true;
         this.aiCard.style.display = 'block';
-        this.searchingIndicator.style.display = 'flex';
         
         // 搜索过程中自动展开详情
         this.isExpanded = true;
@@ -105,8 +103,11 @@ class SearchController {
             await this.delay(2500);
         }
         
-        // 搜索完成，隐藏指示器
-        this.searchingIndicator.style.display = 'none';
+        // 搜索完成，停止扫光动画
+        const aiLabel = this.aiCard.querySelector('.ai-label');
+        if (aiLabel) {
+            aiLabel.classList.add('no-shimmer');
+        }
         await this.delay(300);
         
         // 显示答案时自动折叠详情
